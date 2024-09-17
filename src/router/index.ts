@@ -1,23 +1,31 @@
+// src/router/index.js
+
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/HomeView.vue'
+import Callback from '../views/CallbackView.vue'
+import { completeLogin } from '../authService'
+
+const routes = [
+  { path: '/home', name: 'Home', component: Home },
+  { path: '/callback', name: 'Callback', component: Callback }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
+  routes
 })
+
+// router.beforeEach(async (to, from, next) => {
+//   if (to.name !== 'Callback') {
+//     const user = await completeLogin()
+//     if (!user) {
+//       next({ name: 'Callback' })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 export default router
