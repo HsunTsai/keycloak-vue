@@ -3,10 +3,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 import Callback from '../views/CallbackView.vue'
-import { completeLogin } from '../authService'
+// import { completeLogin } from '../useAuthService'
 
 const routes = [
-  { path: '/home', name: 'Home', component: Home },
+  { path: '/', name: 'Home', component: Home },
   { path: '/callback', name: 'Callback', component: Callback }
 ]
 

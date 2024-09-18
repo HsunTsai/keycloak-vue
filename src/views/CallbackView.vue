@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { completeLogin } from '@/authService'
+import { completeLogin } from '@/useAuthService'
 
 export default {
   async mounted() {
