@@ -1,0 +1,15 @@
+.homeView {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__data {
+    display: flex;
+    word-break: break-all;
+  }
+}

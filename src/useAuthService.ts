@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { UserManager, WebStorageStateStore } from 'oidc-client-ts'
 import { onMounted } from 'vue'
 
@@ -16,8 +17,14 @@ export const userManager = new UserManager(oidcSettings)
 export default () => {
   onMounted(() => {
     userManager.getUser().then((user) => {
-      console.log('User', user)
-      if (!user) {
+      if (user) {
+        console.log('使用者已登入', user)
+        console.log(
+          'accrss_tokne 期限',
+          dayjs((user.expires_at ?? 0) * 1000).format('YYYY-MM-DD HH:mm:ss')
+        )
+      } else {
+        console.log('尚未登入，前往登入頁面')
         userManager.signinRedirect()
       }
     })
